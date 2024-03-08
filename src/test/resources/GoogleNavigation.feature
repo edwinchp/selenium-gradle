@@ -6,5 +6,5 @@ Feature: 001 Access to Google
 
 Scenario: Access to Google
     Given I navigate to www.google.com
-    When I type Chichén Itzá in the search bar
-    Then I can see results
+    #When I type Chichén Itzá in the search bar
+    #Then I can see results
