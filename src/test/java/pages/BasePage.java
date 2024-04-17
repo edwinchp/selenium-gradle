@@ -41,4 +41,8 @@ public class BasePage {
     protected boolean isDisplayed(String locator){
         return find(locator).isDisplayed();
     }
+
+    public static void closeBrowser(){
+        driver.quit();
+    }
 }
