@@ -3,7 +3,7 @@ Feature: 001 Access to Google
     As a regular user
     I want to search about Chichén Itzá
 
-
+@Test @Google
 Scenario: Access to Google
     Given I navigate to www.google.com
     When I click Voy a tener suerte

@@ -34,15 +34,31 @@ public class BasePage {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
     }
 
+    private WebElement find(By ele){
+        return wait.until(ExpectedConditions.presenceOfElementLocated(ele));
+    }
+
     protected void clickElement(String locator){
         find(locator).click();
+    }
+
+    protected void clickElement(By ele){
+        find(ele).click();
     }
 
     protected boolean isDisplayed(String locator){
         return find(locator).isDisplayed();
     }
 
+    protected boolean isDisplayed(By ele){
+        return find(ele).isDisplayed();
+    }
+
     public static void closeBrowser(){
         driver.quit();
+    }
+
+    protected void type(By ele, String text){
+        find(ele).sendKeys(text);
     }
 }
