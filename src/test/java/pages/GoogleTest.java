@@ -14,6 +14,7 @@ public class GoogleTest {
     public void setUp(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        System.out.println("ClassPath: " +  System.getProperty("java.classpath"));
     }
 
     @Test
