@@ -16,6 +16,8 @@ public class TestRunner {
 
     @AfterClass
     public static void cleanDriver(){
+        System.out.println("JAVA CLASSPATH");
+        System.out.println(System.getproperty("java.classpath"));
         BasePage.closeBrowser();
     } 
 }
