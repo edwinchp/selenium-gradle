@@ -18,7 +18,7 @@ public class BasePage {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
     static {
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
 
