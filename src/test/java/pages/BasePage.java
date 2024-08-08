@@ -19,6 +19,7 @@ public class BasePage {
 
     static {
         //WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "/home/edwinchi/chromedriver/chromedriver");
         driver = new ChromeDriver();
     }
 
