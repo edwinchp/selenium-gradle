@@ -23,6 +23,7 @@ public class BasePage {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--no-sandbox");
         driver = new ChromeDriver(chromeOptions);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public BasePage(WebDriver driver){
