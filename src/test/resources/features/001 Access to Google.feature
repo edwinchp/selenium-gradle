@@ -1,7 +1,5 @@
 Feature: 001 Access to Google
-    In order to see Google results
-    As a regular user
-    I want to search about Chichén Itzá
+    Simple navigation to google
 
 @Test @Google
 Scenario: Access to Google
