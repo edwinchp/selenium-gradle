@@ -20,9 +20,9 @@ public class BasePage {
 
     static {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--no-sandbox");
-        driver = new ChromeDriver(chromeOptions);
+        //ChromeOptions chromeOptions = new ChromeOptions();
+        //chromeOptions.addArguments("--no-sandbox");
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
