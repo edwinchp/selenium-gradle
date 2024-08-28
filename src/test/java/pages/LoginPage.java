@@ -31,4 +31,17 @@ public class LoginPage extends BasePage {
     public List<WebElement> getProductList(){
         return getElements(By.xpath("//div[@data-test='inventory-list']//div[@data-test='inventory-item']"));
     }
+
+    public void addProductsToCart(int productAmount) {
+        getElements(By.xpath("//div[@data-test='inventory-list']//div[@data-test='inventory-item']//button"))
+                .stream().limit(productAmount).forEach(button->button.click());
+    }
+
+    public void clickCartIcon() {
+        clickElement(By.id("shopping_cart_container"));
+    }
+
+    public List<WebElement> getProductsInCart() {
+        return getElements(By.xpath("//div[@class='cart_item']"));
+    }
 }

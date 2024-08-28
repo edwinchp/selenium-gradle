@@ -31,4 +31,19 @@ public class SwagLabsSteps {
     public void iCanSeeTheProductsSection() {
         Assert.assertFalse(loginPage.getProductList().isEmpty());
     }
+
+    @And("I add {int} products to cart")
+    public void iAddProductsToCart(int productAmount) {
+        loginPage.addProductsToCart(productAmount);
+    }
+
+    @And("I click cart icon")
+    public void iClickCartIcon() {
+        loginPage.clickCartIcon();
+    }
+
+    @Then("I should see {int} products added")
+    public void iShouldSeeProductsAdded(int productAmount) {
+        Assert.assertEquals(productAmount, loginPage.getProductsInCart().size());
+    }
 }
