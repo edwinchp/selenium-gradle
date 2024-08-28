@@ -1,9 +1,11 @@
 package runner;
 
+import io.cucumber.java.AfterAll;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.testng.annotations.AfterTest;
 import pages.BasePage;
 
 @RunWith(Cucumber.class)
@@ -14,7 +16,7 @@ import pages.BasePage;
 
 public class TestRunner {
 
-    @AfterClass
+    @AfterAll
     public static void cleanDriver(){
         BasePage.closeBrowser();
     } 
