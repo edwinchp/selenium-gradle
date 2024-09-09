@@ -61,7 +61,7 @@ public class SwagLabsSteps {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(productsPage.isItemMenuDisplayed("All Items"));
         softAssert.assertTrue(productsPage.isItemMenuDisplayed("About"));
-        softAssert.assertTrue(productsPage.isItemMenuDisplayed("Change Password"));
+        softAssert.assertTrue(false);
         softAssert.assertTrue(productsPage.isItemMenuDisplayed("Logout"));
         softAssert.assertTrue(productsPage.isItemMenuDisplayed("Reset App State"));
         softAssert.assertAll();
