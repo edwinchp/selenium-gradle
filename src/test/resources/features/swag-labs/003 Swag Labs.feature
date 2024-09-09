@@ -1,7 +1,7 @@
 Feature: 003 Swag Labs
   Validate the user can add product to cart
 
-  @Test @SwagLabs
+  @Test @SwagLabs @SwagLabs_003 @Failed
   Scenario: Login is working
     Given I have the browser opened in "https://www.saucedemo.com/"
 

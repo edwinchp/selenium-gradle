@@ -1,7 +1,7 @@
 Feature: 004 Swag Labs
   Validate the user can see options menu
 
-  @Test @SwagLabs @SwagLabs_004
+  @Test @SwagLabs @SwagLabs_004 @Passed
   Scenario: Login is working
     Given I have the browser opened in "https://www.saucedemo.com/"
 

@@ -1,7 +1,7 @@
 Feature: 001 Swag Labs
   Login to saucedemo.com
 
-  @Test @SwagLabs
+  @Test @SwagLabs @SwagLabs_001 @Failed
   Scenario Outline: Login is working
     Given I have the browser opened in "https://www.saucedemo.com/"
 
