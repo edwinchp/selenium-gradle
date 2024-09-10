@@ -13,7 +13,7 @@ import pages.ProductsPage;
 public class SwagLabsSteps {
 
     private LoginPage loginPage = new LoginPage();
-    private ProductsPage productsPage = new ProductsPage();
+    private ProductsPage productsPage;
 
     @Given("I have the browser opened in {string}")
     public void iHaveTheBrowserOpenedIn(String url) {
@@ -28,7 +28,7 @@ public class SwagLabsSteps {
 
     @And("I click Login button")
     public void iClickLoginButton() {
-        loginPage.clickLoginButton();
+        productsPage = loginPage.clickLoginButton();
     }
 
     @Then("I can see the Products section")

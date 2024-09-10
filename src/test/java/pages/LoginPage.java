@@ -23,8 +23,9 @@ public class LoginPage extends BasePage {
         type(By.id("password"), username);
     }
 
-    public void clickLoginButton() {
+    public ProductsPage clickLoginButton() {
         clickElement(By.id("login-button"));
+        return new ProductsPage();
     }
 
     public void clickCartIcon() {
