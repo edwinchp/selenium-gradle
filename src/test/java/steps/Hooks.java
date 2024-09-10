@@ -13,7 +13,7 @@ public class Hooks extends BasePage{
         super(driver);
     }
 
-    @After
+    @After(order=0)
     public void tearDown(Scenario scenario){
         if(scenario.isFailed()){
             scenario.log("Scenario failed");
@@ -21,4 +21,9 @@ public class Hooks extends BasePage{
             scenario.attach(screenshot, "image/png", "Screenshot error");
         }
     }
+
+    @After(order=1)
+    public static void cleanDriver(){
+        BasePage.closeBrowser();
+    } 
 }
