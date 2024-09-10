@@ -10,7 +10,6 @@ Feature: 003 Swag Labs
     And I click Login button
     And I add 4 products to cart
     And I click cart icon
-
     Then I should see 4 products added
 
   @Test @SwagLabs @SwagLabs_003 @Passed
@@ -19,5 +18,4 @@ Feature: 003 Swag Labs
     And I click Login button
     And I add 4 products to cart
     And I click cart icon
-
     Then I should see 4 products added
