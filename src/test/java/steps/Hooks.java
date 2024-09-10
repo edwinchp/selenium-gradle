@@ -2,12 +2,11 @@ package steps;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import pages.BasePage;
 
-public class Hooks extends BasePage{
+public class Hooks extends BasePage {
 
     public Hooks(){
         super(driver);
@@ -21,9 +20,4 @@ public class Hooks extends BasePage{
             scenario.attach(screenshot, "image/png", "Screenshot error");
         }
     }
-
-    @After(order=1)
-    public static void cleanDriver(){
-        BasePage.closeBrowser();
-    } 
 }
