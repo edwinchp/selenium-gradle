@@ -1,4 +1,4 @@
-Feature: 003 Swag Labs
+Feature: 001 Cart
   Validate the user can add product to cart
 
   @Test @SwagLabs @SwagLabs_003 @Failed

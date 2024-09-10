@@ -1,4 +1,4 @@
-Feature: 001 Swag Labs
+Feature: 001 Login
   Login to saucedemo.com
 
   @Test @SwagLabs @SwagLabs_001 @Failed

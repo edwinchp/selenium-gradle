@@ -1,4 +1,4 @@
-Feature: 004 Swag Labs
+Feature: 001 Navbar
   Validate the user can see options menu
 
   @Test @SwagLabs @SwagLabs_004 @Passed
