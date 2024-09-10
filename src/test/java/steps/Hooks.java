@@ -12,7 +12,7 @@ public class Hooks extends BasePage {
         super(driver);
     }
 
-    @After(order=0)
+    @After()
     public void tearDown(Scenario scenario){
         if(scenario.isFailed()){
             scenario.log("Scenario failed");
