@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,17 +16,30 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BasePage {
 
     protected static WebDriver driver;
-
     protected static WebDriverWait wait;
 
     static {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String browser = System.getProperty("browser", "chrome");
+        initializeDriver(browser);
     }
 
     public BasePage(WebDriver driver){
         BasePage.driver = driver;
+    }
+
+    private static void initializeDriver(String browser) {
+        switch (browser.toLowerCase()) {
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "chrome":
+            default:
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+        }
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public static void navigateTo(String url){
