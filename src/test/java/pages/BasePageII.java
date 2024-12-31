@@ -4,37 +4,23 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import factory.DriverFactory;
-
-public class BasePage {
+public class BasePageII {
 
     protected static WebDriver driver;
-    protected static WebDriverWait wait;
+    private WebDriverWait wait;
 
-    static {
-        driver = DriverFactory.createDriver();
+    public BasePageII(WebDriver driver){
+        BasePageII.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public BasePage(WebDriver driver){
-        BasePage.driver = driver;
-    }
-
-    public static void navigateTo(String url){
+    public void navigateTo(String url){
         driver.get(url);
-    }
-
-    public static void injectSessionCookie(String name, String value, String domain) {
-        Cookie cookie = new Cookie.Builder(name, value)
-                .domain(domain)
-                .build();
-        driver.manage().addCookie(cookie);
     }
 
     private WebElement find(String locator){
@@ -65,7 +51,7 @@ public class BasePage {
         return find(ele).isDisplayed();
     }
 
-    public static void closeBrowser(){
+    public void closeBrowser(){
         driver.close();
     }
 
@@ -77,7 +63,19 @@ public class BasePage {
         return find(ele).getText();
     }
 
-    public static WebDriver getDriver(){
-        return driver;
+    public static void quitDriver(){
+        BasePageII.driver.quit();
+    }
+
+    public void clickIfVisible(By ele){
+        Duration currentDuration = driver.manage().timeouts().getImplicitWaitTimeout();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        try {
+            driver.findElement(ele).click();;
+        } catch (Exception e) {
+            System.out.println("Unable to click on element: " + ele);
+        } finally {
+            driver.manage().timeouts().implicitlyWait(currentDuration);
+        }
     }
 }
