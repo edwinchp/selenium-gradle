@@ -4,8 +4,11 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -32,7 +35,7 @@ public class BasePageII {
     }
 
     private WebElement find(By ele){
-        return wait.until(ExpectedConditions.presenceOfElementLocated(ele));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(ele));
     }
 
     protected void clickElement(String locator){
@@ -77,5 +80,10 @@ public class BasePageII {
         } finally {
             driver.manage().timeouts().implicitlyWait(currentDuration);
         }
+    }
+
+    protected void pressKeys(Keys key){
+        Actions action = new Actions(driver);
+        action.sendKeys(key).build().perform();
     }
 }

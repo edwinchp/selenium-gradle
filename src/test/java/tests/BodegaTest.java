@@ -1,14 +1,9 @@
 package tests;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import factory.DriverFactory;
-import pages.BasePage;
-import pages.GoogleMainPage;
 import pages.WalmartPage;
 
 public class BodegaTest {
@@ -30,7 +25,6 @@ public class BodegaTest {
         walmartPage.goToSearchPage(product);
         System.out.println("Navegando por todas las tiendas y buscando el producto: " + product);
         System.out.println("Precio encontrado: " + walmartPage.getProductPrice());
-       
     }
 
     @AfterMethod

@@ -1,7 +1,5 @@
 package tests;
 import org.openqa.selenium.WebDriver;
-
-import pages.BasePage;
 import pages.WalmartPage;
 
 public class BaseTest {
