@@ -13,9 +13,9 @@ import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import models.Product;
-import pages.BasePageII;
+import pages.BasePage;
 
-public class Hooks extends BasePageII {
+public class Hooks extends BasePage {
 
     private static Scenario scenario;
     private static List<Product> productList;

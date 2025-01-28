@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 import interfaces.OnlineStore;
 
-public class WalmartPage extends BasePageII implements OnlineStore {
+public class WalmartPage extends BasePage implements OnlineStore {
 
     private final By _inputSearch = By.xpath("//input[@placeholder='Buscar en Walmart']");
     private final By _buttonSearch = By.xpath("//button[@aria-label='Icono de búsqueda']");
@@ -58,6 +58,7 @@ public class WalmartPage extends BasePageII implements OnlineStore {
         clickIfVisible(_popUpCloseButton);
     }
 
+    @Override
     public String getProductUrl(){
         return productUrl;
     }

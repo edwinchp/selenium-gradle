@@ -34,9 +34,19 @@ dependencies {
 
     // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
     implementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.20.1'
+
+
 }
 
 tasks.named('test') {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors()
     systemProperty "cucumber.options", System.getProperty("cucumber.options")
     systemProperties System.getProperties();
 }

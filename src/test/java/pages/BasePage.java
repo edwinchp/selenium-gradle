@@ -2,39 +2,26 @@ package pages;
 
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import factory.DriverFactory;
 
 public class BasePage {
 
     protected static WebDriver driver;
-    protected static WebDriverWait wait;
-
-    static {
-        driver = DriverFactory.createDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
+    private WebDriverWait wait;
 
     public BasePage(WebDriver driver){
         BasePage.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public static void navigateTo(String url){
+    public void navigateTo(String url){
         driver.get(url);
-    }
-
-    public static void injectSessionCookie(String name, String value, String domain) {
-        Cookie cookie = new Cookie.Builder(name, value)
-                .domain(domain)
-                .build();
-        driver.manage().addCookie(cookie);
     }
 
     private WebElement find(String locator){
@@ -46,7 +33,7 @@ public class BasePage {
     }
 
     private WebElement find(By ele){
-        return wait.until(ExpectedConditions.presenceOfElementLocated(ele));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(ele));
     }
 
     protected void clickElement(String locator){
@@ -65,7 +52,7 @@ public class BasePage {
         return find(ele).isDisplayed();
     }
 
-    public static void closeBrowser(){
+    public void closeBrowser(){
         driver.close();
     }
 
@@ -77,7 +64,28 @@ public class BasePage {
         return find(ele).getText();
     }
 
-    public static WebDriver getDriver(){
-        return driver;
+    public static void quitDriver(){
+        BasePage.driver.quit();
+    }
+
+    public void clickIfVisible(By ele){
+        Duration currentDuration = driver.manage().timeouts().getImplicitWaitTimeout();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        try {
+            driver.findElement(ele).click();;
+        } catch (Exception e) {
+            System.out.println("Unable to click on element: " + ele);
+        } finally {
+            driver.manage().timeouts().implicitlyWait(currentDuration);
+        }
+    }
+
+    protected void pressKeys(Keys key){
+        Actions action = new Actions(driver);
+        action.sendKeys(key).build().perform();
+    }
+
+    protected String getUrl(){
+        return driver.getCurrentUrl();
     }
 }
