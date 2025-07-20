@@ -1,7 +1,7 @@
 Feature: 001 Navbar
   Validate the user can see options menu
 
-  @Test @SwagLabs @SwagLabs_004 @Passed
+  @Test @SwagLabs @SwagLabs_004 @Passed @Smoke
   Scenario: Login is working
     Given I have the browser opened in "https://www.saucedemo.com/"
 

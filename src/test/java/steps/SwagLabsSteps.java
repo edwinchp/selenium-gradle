@@ -1,10 +1,12 @@
 package steps;
 
+import drivers.DriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
 import pages.LoginPage;
@@ -12,8 +14,9 @@ import pages.ProductsPage;
 
 public class SwagLabsSteps {
 
-    private LoginPage loginPage = new LoginPage();
-    private ProductsPage productsPage = new ProductsPage();
+    private final WebDriver driver = DriverManager.getDriver();
+    private final LoginPage loginPage = new LoginPage(driver);
+    private final ProductsPage productsPage = new ProductsPage(driver);
 
     @Given("I have the browser opened in {string}")
     public void iHaveTheBrowserOpenedIn(String url) {
