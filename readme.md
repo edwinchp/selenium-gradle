@@ -26,3 +26,9 @@ cd selenium-gradle
 ```bash
 gradle clean test --tests "runner.TestRunnerSmoke"
 ```
+
+
+### Run some remote tests in LambdaTest platform
+```bash
+gradle clean test --tests "runner.TestRunnerSmoke" -Dbrowser=lambda-test -DLT_USERNAME=myusername -DLT_ACCESS_KEY=12345
+```

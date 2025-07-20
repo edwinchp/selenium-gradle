@@ -1,8 +1,6 @@
 package drivers;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -25,14 +23,12 @@ public class DriverManager {
                 }
                 driver.set(new FirefoxDriver(firefoxOptions));
                 break;
+            case "lambda-test":
+                driver.set(LambdaTestChromeDriver.getDriver());
+                break;
             case "chrome":
             default:
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions chromeOptions = new ChromeOptions();
-                if (headless) {
-                    chromeOptions.addArguments("--headless");
-                }
-                driver.set(new ChromeDriver(chromeOptions));
+                driver.set(ChromeBrowserDriver.getDriver());
                 break;
         }
 
