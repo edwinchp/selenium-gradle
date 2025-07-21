@@ -12,17 +12,11 @@ public class DriverManager {
 
     public static void createDriver() {
         String browser = EnvConfig.getOptional("browser", "chrome");
-        boolean headless = Boolean.parseBoolean(EnvConfig.getOptional("headless", "false"));
         boolean maximize = Boolean.parseBoolean(EnvConfig.getOptional("maximize", "true"));
 
         switch (browser.toLowerCase()) {
             case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                if (headless) {
-                    firefoxOptions.addArguments("--headless");
-                }
-                driver.set(new FirefoxDriver(firefoxOptions));
+                driver.set(FirefoxBrowserDriver.getDriver());
                 break;
             case "lambda-test":
                 driver.set(LambdaTestChromeDriver.getDriver());
