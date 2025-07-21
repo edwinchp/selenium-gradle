@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import utils.EnvConfig;
 
 public class DriverManager {
 
@@ -11,8 +12,8 @@ public class DriverManager {
 
     public static WebDriver createDriver() {
         String browser = System.getProperty("browser", "chrome");
-        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
-        boolean maximize = Boolean.parseBoolean(System.getProperty("maximize", "true"));
+        boolean headless = Boolean.parseBoolean(EnvConfig.getOptional("headless", "false"));
+        boolean maximize = Boolean.parseBoolean(EnvConfig.getOptional("maximize", "true"));
 
         switch (browser.toLowerCase()) {
             case "firefox":
