@@ -3,6 +3,7 @@ package drivers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import utils.EnvConfig;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,8 +12,8 @@ import java.util.Map;
 
 public class LambdaTestChromeDriver {
 
-    static String USERNAME = System.getProperty("LT_USERNAME");
-    static String ACCESS_KEY = System.getProperty("LT_ACCESS_KEY");
+    static String USERNAME = EnvConfig.getRequired("LT_USERNAME");
+    static String ACCESS_KEY = EnvConfig.getRequired("LT_ACCESS_KEY");
 
     public static String hubURL = "https://hub.lambdatest.com/wd/hub";
 
@@ -20,6 +21,17 @@ public class LambdaTestChromeDriver {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "Chrome");
         capabilities.setCapability("browserVersion", "127");
+        Map<String, Object> ltOptions = getLtOptions();
+        capabilities.setCapability("LT:Options", ltOptions);
+
+        try {
+            return new RemoteWebDriver(new URL(hubURL), capabilities);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static Map<String, Object> getLtOptions() {
         Map<String, Object> ltOptions = new HashMap<>();
         ltOptions.put("username", USERNAME);
         ltOptions.put("accessKey", ACCESS_KEY);
@@ -32,12 +44,6 @@ public class LambdaTestChromeDriver {
         ltOptions.put("video", true);
         ltOptions.put("network", true);
         ltOptions.put("console", "true");
-        capabilities.setCapability("LT:Options", ltOptions);
-
-        try {
-            return new RemoteWebDriver(new URL(hubURL), capabilities);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        return ltOptions;
     }
 }
