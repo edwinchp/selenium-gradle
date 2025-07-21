@@ -10,8 +10,8 @@ public class DriverManager {
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static WebDriver createDriver() {
-        String browser = System.getProperty("browser", "chrome");
+    public static void createDriver() {
+        String browser = EnvConfig.getOptional("browser", "chrome");
         boolean headless = Boolean.parseBoolean(EnvConfig.getOptional("headless", "false"));
         boolean maximize = Boolean.parseBoolean(EnvConfig.getOptional("maximize", "true"));
 
@@ -37,7 +37,7 @@ public class DriverManager {
             driver.get().manage().window().maximize();
         }
 
-        return driver.get();
+        driver.get();
     }
 
     public static void quitDriver() {
